@@ -1,0 +1,52 @@
+import numpy as np
+
+# we will have this componant 
+
+mu = 398.6e3 # km^3/s^2
+r0 = np.fromstring(input("Enter the value for r0p , r0q , r0w: "), dtype=float, sep=",")
+v0 = np.fromstring(input("Enter the value for v0p ,v0q ,v0w: "), dtype=float, sep=",")
+delta_theta = input("enter the change in true anomuly: ")
+delta_theta = float(delta_theta ) * (np.pi / 180.00)
+
+
+#1.  to calc the mag of v0 & r0 
+r0_mag = np.sqrt(np.dot(r0,r0))
+v0_mag = np.sqrt(np.dot(v0, v0))
+
+
+# #2. to calc specific angular momentum 
+h = np.cross(r0, v0)
+h_mag = np.sqrt(np.dot(h, h))
+print (h_mag)
+
+# # 3. to calc radial velocity 
+v_r0 = np.dot(r0, v0) / r0_mag
+print (v_r0)
+
+# # #4. to calc eccentricity 
+theta_0 = np.arctan(r0[1] / r0[0])
+e = ((h_mag*h_mag/(mu * r0_mag)) - 1) / np.cos(theta_0)
+print (e )
+
+#5. to calc mag of new r 
+r_mag = (h_mag**2/mu) / (
+    1 + ((h_mag**2/(mu*r0_mag)) - 1)*np.cos(delta_theta) - h_mag*v_r0 * np.sin(delta_theta)/mu
+    )
+print (r_mag )
+
+ #6. to calc lagrange coefficients 
+f = 1 - (mu * r_mag * (1 - np.cos(delta_theta)) / h_mag**2 )
+g = r_mag * r0_mag * np.sin(delta_theta) / h_mag
+fdot = (mu / h_mag)*(1 - np.cos(delta_theta))*(
+    mu*(1 - np.cos(delta_theta))/h_mag**2 - (1/r0_mag) - (1/r_mag)
+    ) / np.sin(delta_theta)
+gdot = 1 - (mu*r0_mag*(1 - np.cos(delta_theta)) / h_mag**2)
+
+# 7. to calc new r & v as vectors 
+r = f*r0 + g*v0
+v = fdot*r0 + gdot*v0
+
+print(f"r = {r}")
+print(f"v = {v}")
+
+
