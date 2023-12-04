@@ -10,12 +10,21 @@ Lagrange coefficients
 orbit equation
 perifocal frame 
 true anomly 
+semi major axis 
+
  
 # requirements 
+Python3 IDLE OR VS
+Tools:
+(numpy )
+
 
 
 # Resources
+[references](https://kyleniemeyer.github.io/space-systems-notes/orbital-mechanics/two-body-problems.html)
 
+
+![orbit ](https://github.com/NohaFathy/lagrange-orbit-predictor/assets/112027310/2db7375e-3d41-4829-af16-2ba2c3548303)
 
 
 
