@@ -1,0 +1,11 @@
+# 8. Calculate specific energy (epsilon)
+epsilon = v0_mag**2 / 2 - mu / r0_mag
+
+# 9. Calculate semi-major axis (a)
+a = -mu / (2 * epsilon)
+
+# 10. Calculate period (T)
+T = 2 * np.pi * np.sqrt(a**3 / mu)
+
+print(f"Semi-Major Axis (a): {a} km")
+print(f"Period (T): {T} seconds")
