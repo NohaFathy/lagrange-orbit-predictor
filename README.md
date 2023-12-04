@@ -1,5 +1,24 @@
 # lagrange-orbit-predictor
-a simple project for calculating  the current velocity and position for a satellite by python.
+a simple project for calculating  the current velocity and position for a satellite with python.
+it uses lagrane coefficients to calculate the current velocity and position depending on the initial values user enters.
+it also calculate the time taken to reach this  position .
+the input : initial values of satellite's velocity and position (V0 , R0 ).
+the output : current velocity and position (V , R ) & time (t).
+
+# concepts 
+Lagrange coefficients
+orbit equation
+perifocal frame 
+true anomly 
+ 
+# requirements 
+
+
+# Resources
+
+
+
+
 
 
 
